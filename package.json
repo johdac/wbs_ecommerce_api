@@ -5,9 +5,9 @@
   "main": "dist/app.js",
   "type": "module",
   "imports": {
-    "#utils": {
-      "development": "./src/utils/index.ts",
-      "default": "./dist/utils/index.js"
+    "#controllers": {
+      "development": "./src/controllers/index.ts",
+      "default": "./dist/controllers/index.js"
     },
     "#db": {
       "development": "./src/db/index.ts",
@@ -21,9 +21,17 @@
       "development": "./src/models/index.ts",
       "default": "./dist/models/index.js"
     },
+    "#routes": {
+      "development": "./src/routes/index.ts",
+      "default": "./dist/routes/index.js"
+    },
     "#schema": {
       "development": "./src/schema/index.ts",
       "default": "./dist/schema/index.js"
+    },
+    "#utils": {
+      "development": "./src/utils/index.ts",
+      "default": "./dist/utils/index.js"
     }
   },
   "scripts": {

@@ -2,6 +2,7 @@ import "#db";
 import express from "express";
 import { errorHandler } from "#middleware";
 import { User } from "#models";
+import { userRoutes } from "#routes";
 
 const app = express();
 const port = process.env.BE_PORT;
@@ -12,10 +13,7 @@ app.route("/").get((req, res) => {
   res.json("Hello World");
 });
 
-app.route("/users").post(async (req, res) => {
-  const data = await User.create(req.body);
-  res.json(data);
-});
+app.use("/users", userRoutes);
 
 app.route("/error").get((req, res) => {
   throw new Error("Error text", { cause: { status: 400 } });
