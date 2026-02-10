@@ -1,13 +1,19 @@
 meta {
-  name: Get Category
+  name: Update Category
   type: http
-  seq: 6
+  seq: 3
 }
 
-get {
+put {
   url: {{root_url}}/categories/{{id}}
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "name": "Shorts"
+  }
 }
 
 vars:pre-request {

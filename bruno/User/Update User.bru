@@ -1,18 +1,19 @@
 meta {
-  name: Create Category
+  name: Update User
   type: http
   seq: 5
 }
 
-post {
-  url: {{root_url}}/categories
+put {
+  url: {{root_url}}/users/698bb017c7202002ab35c375
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "name": "Hosen"}
+    "name": "ffff"
+  }
 }
 
 settings {
