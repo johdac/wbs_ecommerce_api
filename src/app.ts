@@ -1,7 +1,7 @@
 import "#db";
 import express from "express";
 import { errorHandler } from "#middleware";
-import { userRoutes } from "#routes";
+import { categoryRoutes, userRoutes } from "#routes";
 import cors from "cors";
 
 const app = express();
@@ -20,10 +20,7 @@ app.route("/").get((req, res) => {
 });
 
 app.use("/users", userRoutes);
-
-app.route("/error").get((req, res) => {
-  throw new Error("Error text", { cause: { status: 400 } });
-});
+app.use("/categories", categoryRoutes);
 
 app.use(errorHandler);
 

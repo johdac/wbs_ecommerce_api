@@ -1,0 +1,21 @@
+meta {
+  name: Create Category
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{root_url}}/categories
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Hosen"}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
