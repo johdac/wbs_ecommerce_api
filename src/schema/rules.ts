@@ -11,5 +11,5 @@ export const email = z.email({ message: "Email has wrong format" });
 export const number = z.number({ message: "Provided value is not a number" });
 
 export const mongoId = z.string().refine(isValidObjectId, {
-  message: "Invalid MongoDB ObjectId provided",
+  message: "Provided id is not valid",
 });

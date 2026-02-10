@@ -2,7 +2,8 @@ import { Category } from "#models";
 import { type RequestHandler } from "express";
 import type {
   CategoryCreateRequestDto,
-  categoryGetSingleRequestParamsDto,
+  categoryUpdateRequestDto,
+  paramObjectIdDto,
 } from "#schema";
 
 export const categoryGetAll: RequestHandler = async (req, res) => {
@@ -24,11 +25,28 @@ export const categoryCreate: RequestHandler<
   res.json(data);
 };
 
-export const categoryGetSingle: RequestHandler<
-  categoryGetSingleRequestParamsDto
-> = async (req, res) => {
+export const categoryGetSingle: RequestHandler<paramObjectIdDto> = async (
+  req,
+  res,
+) => {
   const data = await Category.findById(req.params.id);
   if (!data)
     throw new Error("This page cannot be found", { cause: { status: 404 } });
   res.json(data);
+};
+
+export const categoryUpdate: RequestHandler<
+  paramObjectIdDto,
+  any,
+  categoryUpdateRequestDto
+> = async (req, res) => {
+  const category = await Category.findById(req.params.id);
+  if (!category)
+    throw new Error("Update not possible. Category does not exist.", {
+      cause: { status: 404 },
+    });
+
+  category.name = req.body.name;
+  await category.save();
+  res.json(category);
 };
