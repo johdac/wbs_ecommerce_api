@@ -1,12 +1,18 @@
 import "#db";
 import express from "express";
 import { errorHandler } from "#middleware";
-import { User } from "#models";
 import { userRoutes } from "#routes";
+import cors from "cors";
 
 const app = express();
 const port = process.env.BE_PORT;
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 app.route("/").get((req, res) => {

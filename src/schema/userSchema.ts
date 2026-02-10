@@ -1,5 +1,5 @@
-import z from "zod/v4";
-import { string64, email } from "./rules";
+import { z } from "zod";
+import { string64, email } from "./rules.ts";
 
 const userBaseSchema = z.strictObject({
   firstName: string64,
