@@ -24,6 +24,10 @@ app.use("/users", userRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/products", productRoutes);
 
+app.use("*splat", (req, res) => {
+  throw new Error("Not found", { cause: { status: 404 } });
+});
+
 app.use(errorHandler);
 
 app.listen(port, () =>

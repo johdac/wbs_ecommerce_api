@@ -5,7 +5,7 @@ import {
   categoryGetSingle,
   categoryUpdate,
 } from "#controllers";
-import { validateBody, validateParams } from "#middleware";
+import { validateBody, validateRouteParams } from "#middleware";
 import {
   categoryCreateRequestSchema,
   categoryUpdateRequestSchema,
@@ -21,9 +21,9 @@ categoryRoutes
 
 categoryRoutes
   .route("/:id")
-  .get(validateParams(paramObjectIdSchema), categoryGetSingle)
+  .get(validateRouteParams(paramObjectIdSchema), categoryGetSingle)
   .put(
-    validateParams(paramObjectIdSchema),
+    validateRouteParams(paramObjectIdSchema),
     validateBody(categoryUpdateRequestSchema),
     categoryUpdate,
   );

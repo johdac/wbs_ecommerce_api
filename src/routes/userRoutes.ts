@@ -6,7 +6,7 @@ import {
   userGetSingle,
   userUpdate,
 } from "#controllers";
-import { validateBody, validateParams } from "#middleware";
+import { validateBody, validateRouteParams } from "#middleware";
 import {
   paramObjectIdSchema,
   userCreateRequestSchema,
@@ -22,10 +22,10 @@ userRoutes
 
 userRoutes
   .route("/:id")
-  .get(validateParams(paramObjectIdSchema), userGetSingle)
+  .get(validateRouteParams(paramObjectIdSchema), userGetSingle)
   .put(
-    validateParams(paramObjectIdSchema),
+    validateRouteParams(paramObjectIdSchema),
     validateBody(userUpdateRequestSchema),
     userUpdate,
   )
-  .delete(validateParams(paramObjectIdSchema), userDelete);
+  .delete(validateRouteParams(paramObjectIdSchema), userDelete);

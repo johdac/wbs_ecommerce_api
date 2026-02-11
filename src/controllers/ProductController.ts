@@ -4,7 +4,10 @@ import type { productCreateDto } from "#schema/productSchema";
 import type { RequestHandler } from "express";
 
 export const productGetAll: RequestHandler = async (req, res) => {
-  const products = await Product.find();
+  const { categoryId } = req.query;
+  let products;
+  if (categoryId) products = await Product.find({ category: categoryId });
+  else products = await Product.find();
   res.json(products);
 };
 

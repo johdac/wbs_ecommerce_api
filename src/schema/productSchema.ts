@@ -10,3 +10,7 @@ const productBaseSchema = z.strictObject({
 
 export const productCreateSchema = productBaseSchema;
 export type productCreateDto = z.infer<typeof productCreateSchema>;
+
+export const productQueryParams = z.object({
+  categoryId: mongoId.optional(),
+});
