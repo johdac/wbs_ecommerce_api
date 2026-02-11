@@ -5,7 +5,6 @@ import type {
   productUpdateRequestDto,
 } from "#schema";
 import type { RequestHandler } from "express";
-import { Types } from "mongoose";
 
 const checkCategory = async (categoryId: string) => {
   if (!(await Category.exists({ _id: categoryId })))
@@ -48,20 +47,31 @@ export const productUpdate: RequestHandler<
   any,
   productUpdateRequestDto
 > = async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const productUpdates: any = {};
+
+  if (req.body.name) productUpdates.name = req.body.name;
+  if (req.body.description) productUpdates.description = req.body.description;
+  if (req.body.price) productUpdates.price = req.body.price;
+
+  if (req.body.category) {
+    await checkCategory(req.body.category);
+    productUpdates.category = req.body.category;
+  }
+
+  const product = await Product.findByIdAndUpdate(
+    req.params.id,
+    productUpdates,
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
+
   if (!product)
     throw new Error("Update not possible. Product does not exist.", {
       cause: { status: 404 },
     });
 
-  if (req.body.name) product.name = req.body.name;
-  if (req.body.description) product.description = req.body.description;
-  if (req.body.price) product.price = req.body.price;
-  if (req.body.category) {
-    await checkCategory(req.body.category);
-    product.category = new Types.ObjectId(req.body.category);
-  }
-  await product.save();
   res.json(product);
 };
 

@@ -14,8 +14,14 @@ const orderBaseSchema = z.strictObject({
       }),
     )
     .min(1, { message: "At least one product is required" }),
-  total: z.number().min(0, { message: "The total must be a positive number" }),
 });
 
 export const orderCreateRequestSchema = orderBaseSchema;
 export type OrderCreateRequestDto = z.infer<typeof orderCreateRequestSchema>;
+
+export const orderUpdateRequestSchema = orderBaseSchema
+  .partial()
+  .refine((data) => Object.keys(data).length > 0, {
+    message: "At least one field must be provided",
+  });
+export type orderUpdateRequestDto = z.infer<typeof orderUpdateRequestSchema>;

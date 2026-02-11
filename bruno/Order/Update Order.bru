@@ -1,0 +1,28 @@
+meta {
+  name: Update Order
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{root_url}}/orders/698c970dfe1c0889c95789be
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userId": "698baf98b64f2a2c180f6122",
+    "products": [
+      {
+        "productId": "698b8c978187c9a5c3029feb",
+        "quantity": 2
+      }
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
