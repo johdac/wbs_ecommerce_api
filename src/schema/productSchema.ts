@@ -11,6 +11,15 @@ const productBaseSchema = z.strictObject({
 export const productCreateSchema = productBaseSchema;
 export type productCreateDto = z.infer<typeof productCreateSchema>;
 
+export const productUpdateRequestSchema = productBaseSchema
+  .partial()
+  .refine((data) => Object.keys(data).length > 0, {
+    message: "At least one field must be provided",
+  });
+export type productUpdateRequestDto = z.infer<
+  typeof productUpdateRequestSchema
+>;
+
 export const productQueryParams = z.object({
   categoryId: mongoId.optional(),
 });

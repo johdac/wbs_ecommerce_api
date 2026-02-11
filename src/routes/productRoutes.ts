@@ -1,4 +1,10 @@
-import { productCreate, productGetAll, productGetSingle } from "#controllers";
+import {
+  productCreate,
+  productDelete,
+  productGetAll,
+  productGetSingle,
+  productUpdate,
+} from "#controllers";
 import {
   validateBody,
   validateRouteParams,
@@ -7,6 +13,7 @@ import {
 import {
   paramObjectIdSchema,
   productCreateSchema,
+  productUpdateRequestSchema,
   productQueryParams,
 } from "#schema";
 import { Router } from "express";
@@ -20,4 +27,10 @@ productRoutes
 
 productRoutes
   .route("/:id")
-  .get(validateRouteParams(paramObjectIdSchema), productGetSingle);
+  .get(validateRouteParams(paramObjectIdSchema), productGetSingle)
+  .put(
+    validateRouteParams(paramObjectIdSchema),
+    validateBody(productUpdateRequestSchema),
+    productUpdate,
+  )
+  .delete(validateRouteParams(paramObjectIdSchema), productDelete);

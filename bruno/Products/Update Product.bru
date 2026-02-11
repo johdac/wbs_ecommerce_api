@@ -1,18 +1,18 @@
 meta {
-  name: Create Product
+  name: Update Product
   type: http
-  seq: 1
+  seq: 4
 }
 
-post {
-  url: {{root_url}}/products
+put {
+  url: {{root_url}}/products/698b8c978187c9a5c3029feb
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "name": "New product 3",
+    "name": "Nes",
     "price": 23,
     "category": "698c3214ade93d36cfb801e5"
   }
