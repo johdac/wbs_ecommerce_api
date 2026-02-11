@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   categoryCreate,
+  categoryDelete,
   categoryGetAll,
   categoryGetSingle,
   categoryUpdate,
@@ -26,4 +27,5 @@ categoryRoutes
     validateRouteParams(paramObjectIdSchema),
     validateBody(categoryUpdateRequestSchema),
     categoryUpdate,
-  );
+  )
+  .delete(validateRouteParams(paramObjectIdSchema), categoryDelete);

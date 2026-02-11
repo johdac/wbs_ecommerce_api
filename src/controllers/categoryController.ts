@@ -50,3 +50,12 @@ export const categoryUpdate: RequestHandler<
   await category.save();
   res.json(category);
 };
+
+export const categoryDelete: RequestHandler = async (req, res) => {
+  const deleted = await Category.deleteOne({ _id: req.params.id });
+  if (deleted.deletedCount > 0) res.sendStatus(204);
+  else
+    throw new Error("No such category", {
+      cause: { status: 404 },
+    });
+};
