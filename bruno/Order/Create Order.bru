@@ -1,0 +1,29 @@
+meta {
+  name: Create Order
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{root_url}}/orders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userId": "698badb080a1323b0a9da081",
+    "products": [
+      {
+        "productId": "698b8c978187c9a5c3029feb", 
+        "quantity": 213
+      }
+    ],
+    "total": 12
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

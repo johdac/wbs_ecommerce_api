@@ -11,7 +11,7 @@ const productSchema = new Schema(
     },
     price: {
       type: Number,
-      required: [],
+      required: [true, "Price is required"],
     },
     category: {
       type: Schema.Types.ObjectId,
