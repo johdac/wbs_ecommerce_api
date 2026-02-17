@@ -48,12 +48,14 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^24.0.14",
+    "@types/swagger-ui-dist": "^3.30.6",
     "typescript": "^5.8.3"
   },
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mongoose": "^9.1.6",
+    "swagger-ui-dist": "^5.31.0",
     "zod": "^4.3.6"
   }
 }

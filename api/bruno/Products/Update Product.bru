@@ -1,13 +1,21 @@
 meta {
-  name: Get Product by Id
+  name: Update Product
   type: http
-  seq: 2
+  seq: 5
 }
 
-get {
+put {
   url: {{root_url}}/products/698b8c978187c9a5c3029feb
   body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "name": "Nes",
+    "price": 23,
+    "category": "698c3214ade93d36cfb801e5"
+  }
 }
 
 settings {

@@ -12,18 +12,8 @@ post {
 
 body:json {
   {
-    "name": "Category 1"
+    "name": "Delete this"
   }
-}
-
-vars:pre-request {
-  root_url: http://localhost:3000
-}
-
-script:post-response {
-  const body = res.getBody();
-  bru.setEnvVar("categoryId", body.id);
-  
 }
 
 settings {
