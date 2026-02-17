@@ -1,0 +1,26 @@
+meta {
+  name: updateCategoryOne
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{root_url}}/categories/{{categoryOneId}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Shorts"
+  }
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

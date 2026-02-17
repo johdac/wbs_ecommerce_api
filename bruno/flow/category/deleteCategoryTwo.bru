@@ -1,0 +1,20 @@
+meta {
+  name: deleteCategoryTwo
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{root_url}}/categories/{{categoryTwoId}}
+  body: none
+  auth: inherit
+}
+
+assert {
+  res.status: eq 204
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

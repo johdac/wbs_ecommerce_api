@@ -1,0 +1,24 @@
+meta {
+  name: malformedEmailCheck
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{root_url}}/users
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Jack Wack",
+    "password": "asdfasdf", 
+    "email": "jackwackgmail.com"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

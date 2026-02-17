@@ -1,0 +1,32 @@
+meta {
+  name: createProductOne
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{root_url}}/products
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Great Product 1",
+    "price": 23,
+    "category": "{{categoryOneId}}"
+  }
+}
+
+vars:post-response {
+  productOneId: res.body.id
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,32 @@
+meta {
+  name: createUserDuplicate
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{root_url}}/users
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "John Doe 2",
+    "password": "asdfasdf", 
+    "email": "johndoe2@gmail.com"
+  }
+}
+
+vars:post-response {
+  userTwoId: res.body.id
+}
+
+assert {
+  res.status: eq 409
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

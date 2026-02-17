@@ -1,0 +1,32 @@
+meta {
+  name: createUserTwo
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{root_url}}/users
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "John Doe 2",
+    "password": "asdfasdf", 
+    "email": "johndoe2@gmail.com"
+  }
+}
+
+vars:post-response {
+  userTwoID: res.body.id
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

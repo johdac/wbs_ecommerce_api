@@ -1,0 +1,20 @@
+meta {
+  name: getNonexistingOrder
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{root_url}}/orders/6994304a1c7d2c8ce0bc1022
+  body: none
+  auth: inherit
+}
+
+assert {
+  res.status: eq 404
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

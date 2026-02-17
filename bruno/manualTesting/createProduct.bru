@@ -1,0 +1,32 @@
+meta {
+  name: createProduct
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{root_url}}/products
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Gloves",
+    "price": 12,
+    "category": "69943b611c7d2c8ce0bc13da"
+  }
+}
+
+vars:post-response {
+  productOneId: res.body.id
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

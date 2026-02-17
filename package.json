@@ -35,6 +35,7 @@
     }
   },
   "scripts": {
+    "bru": "cd ./bruno && bru run --env default",
     "dev": "node --watch --conditions development --env-file=.env src/app.ts",
     "prebuild": "rm -rf dist",
     "build": "tsc",

@@ -1,0 +1,40 @@
+meta {
+  name: createOrderOne
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{root_url}}/orders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userId": "{{userOneId}}",
+    "products": [
+      {
+        "productId": "{{productOneId}}", 
+        "quantity": 2
+      },
+      {
+        "productId": "{{productTwoId}}", 
+        "quantity": 5
+      }
+    ]}
+}
+
+vars:post-response {
+  orderOneId: res.body.id
+}
+
+assert {
+  res.status: eq 200
+  res.body.total: eq 91
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
