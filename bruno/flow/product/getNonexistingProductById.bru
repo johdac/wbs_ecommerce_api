@@ -1,0 +1,20 @@
+meta {
+  name: getNonexistingProductById
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{root_url}}/products/699426641c7d2c8ce0bc0f6c
+  body: json
+  auth: inherit
+}
+
+assert {
+  res.status: eq 404
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

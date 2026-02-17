@@ -1,0 +1,22 @@
+meta {
+  name: createCategory
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{root_url}}/categories
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Plumbing Suplies"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

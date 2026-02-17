@@ -1,0 +1,20 @@
+meta {
+  name: deleteProductThree
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{root_url}}/products/{{productThreeId}}
+  body: none
+  auth: inherit
+}
+
+assert {
+  res.status: eq 204
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

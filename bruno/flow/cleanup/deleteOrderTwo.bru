@@ -1,0 +1,20 @@
+meta {
+  name: deleteOrderTwo
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{root_url}}/orders/{{orderTwoId}}
+  body: none
+  auth: inherit
+}
+
+assert {
+  res.status: eq 204
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

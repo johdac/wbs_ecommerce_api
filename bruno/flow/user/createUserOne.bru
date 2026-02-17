@@ -1,0 +1,32 @@
+meta {
+  name: createUserOne
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{root_url}}/users
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "John Doe",
+    "password": "asdfasdf", 
+    "email": "johndoe@gmail.com"
+  }
+}
+
+vars:post-response {
+  userOneId: res.body.id
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

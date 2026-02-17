@@ -1,0 +1,27 @@
+meta {
+  name: updateProductOne
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{root_url}}/products/{{productOneId}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Nes",
+    "price": 43
+  }
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

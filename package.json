@@ -5,23 +5,58 @@
   "main": "dist/app.js",
   "type": "module",
   "imports": {
+    "#controllers": {
+      "development": "./src/controllers/index.ts",
+      "default": "./dist/controllers/index.js"
+    },
+    "#db": {
+      "development": "./src/db/index.ts",
+      "default": "./dist/db/index.js"
+    },
+    "#middleware": {
+      "development": "./src/middleware/index.ts",
+      "default": "./dist/middleware/index.js"
+    },
+    "#models": {
+      "development": "./src/models/index.ts",
+      "default": "./dist/models/index.js"
+    },
+    "#routes": {
+      "development": "./src/routes/index.ts",
+      "default": "./dist/routes/index.js"
+    },
+    "#schema": {
+      "development": "./src/schema/index.ts",
+      "default": "./dist/schema/index.js"
+    },
     "#utils": {
       "development": "./src/utils/index.ts",
       "default": "./dist/utils/index.js"
     }
   },
   "scripts": {
-    "dev": "node --watch --conditions development src/app.ts",
+    "bru": "cd ./bruno && bru run --env default",
+    "dev": "node --watch --conditions development --env-file=.env src/app.ts",
     "prebuild": "rm -rf dist",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js --env-file=.env"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
     "@types/node": "^24.0.14",
+    "@types/swagger-ui-dist": "^3.30.6",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.6",
+    "swagger-ui-dist": "^5.31.0",
+    "zod": "^4.3.6"
   }
 }

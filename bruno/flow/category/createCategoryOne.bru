@@ -1,0 +1,30 @@
+meta {
+  name: createCategoryOne
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{root_url}}/categories
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Test Category"
+  }
+}
+
+vars:post-response {
+  categoryOneId: res.body.id
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

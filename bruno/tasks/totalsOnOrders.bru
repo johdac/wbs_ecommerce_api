@@ -1,0 +1,32 @@
+meta {
+  name: totalsOnOrders
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{root_url}}/orders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userId": "69943b211c7d2c8ce0bc13ce",
+    "products": [
+      {
+        "productId": "69943bd71c7d2c8ce0bc13f0", 
+        "quantity": 2
+      },
+      {
+        "productId": "69943c2a1c7d2c8ce0bc13fc", 
+        "quantity": 1
+      }
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

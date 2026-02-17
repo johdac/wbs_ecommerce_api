@@ -1,0 +1,26 @@
+meta {
+  name: createCategoryDuplicate
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{root_url}}/categories
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Test Category"
+  }
+}
+
+assert {
+  res.status: eq 409
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

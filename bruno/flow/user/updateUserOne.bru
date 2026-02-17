@@ -1,0 +1,26 @@
+meta {
+  name: updateUserOne
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{root_url}}/users/{{userOneId}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Dagobert Duck"
+  }
+}
+
+assert {
+  res.status: eq 200
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
