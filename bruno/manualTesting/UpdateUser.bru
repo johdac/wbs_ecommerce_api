@@ -1,0 +1,22 @@
+meta {
+  name: UpdateUser
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{root_url}}/users/699469931a30acc154b119b1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "john wayne"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
